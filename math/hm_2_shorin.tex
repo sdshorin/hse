@@ -1,0 +1,66 @@
+\documentclass[a4paper]{article}
+
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools}
+
+\author{Шорин Сергей, БКНАД211}
+\title{Матанализ ДЗ 2}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\section{4.a}
+Найти предел, используя определение: 
+$\displaystyle{\lim_{x \to \infty}} \frac{n^2 + 3n - 1}{3n^2 - 2n + 2}$
+
+$$|\frac{n^2 + 3n - 1}{3n^2 - 2n + 2} - \frac{1}{3}| < \epsilon $$
+
+$$\frac{3n^2 + 9n - 3 - 3n^2 + 2n - 2 }{9n^2 - 6n + 6} < \epsilon $$
+$$\frac{ 11n - n}{9n^2 + n^2} < \frac{ 11n - 5}{9n^2 - 6n + 6} < \epsilon $$
+
+$$\frac{ 10n}{10n^2} < \epsilon $$
+$$\frac{ 1}{n} < \epsilon $$
+$$N = \frac{ 1}{\epsilon} + 1 $$
+
+\section{4.б}
+Найти предел, используя определение: 
+$\displaystyle{\lim_{x \to \infty}} \frac{\log_an}{n}$
+
+$$ \frac{\log_an}{n} < \frac{\log_an}{n} < \epsilon $$
+$$ \log_an < \epsilon n $$
+
+$$ \frac{\ln n}{\ln a} < \epsilon n $$
+
+$$ 1 < \ln n < \epsilon n \ln a $$
+$$ 1 < \epsilon n \ln a $$
+$$ \frac{1}{\epsilon \ln a} <  n  $$
+$$ \frac{1}{\epsilon \ln a} <  n  $$
+$$ N = \frac{1}{\epsilon \ln a} + 1  $$
+
+\section{4.в}
+Найти предел, используя определение: 
+$\displaystyle{\lim_{x \to \infty}} \sqrt[n]{n}$
+
+$$\sqrt[n]{n} - 1 < \epsilon$$
+
+$$\sqrt[n]{n}  < \epsilon + 1$$ 
+
+$$ n  < (1 + \epsilon ) ^ n$$ 
+Заметим, что правую часть неравенства можно разложить по биному Ньютона.
+
+$$ n  < 1 + n\epsilon + \frac{n(n-1)}{2}\epsilon^2 + ... $$ 
+
+Так как $\epsilon$ стремится к нулю, $\epsilon^2$ 
+
+
+
+\end{document}
