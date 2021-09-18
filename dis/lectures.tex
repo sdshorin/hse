@@ -1,0 +1,117 @@
+\documentclass[a4paper]{article}
+
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools}
+
+\author{Шорин Сергей, БКНАД211}
+\title{Матанализ ДЗ 1}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\section{Лекция 1 Введение в алгебру логики}
+
+
+
+Определение: Высказывание - это утверждение, о котором можно однозначно сказать оно истинное или нет. Выскзывание можно обозначить латинской буквой.
+
+Высказывание можно объединять в связки - A и B
+
+Высказывание без связок - простое. С связками - составное.
+
+
+Таблицы истинности:
+
+Кноьюнкция: $a\wedge b$ = a and b
+
+Дизюнкция: $a \vee b$ = a or b
+
+Свойства: куммутативны 
+
+Импликация: $a \rightarrow b$:
+\begin{equation}
+\begin{tabular}{cc|c}
+a & b & a $\rightarrow$ b \\
+\hline
+0 & 0 & 1 \\
+0 & 1 & 1 \\
+1 & 0 & 0 \\
+1 & 1 & 1 \\
+\end{tabular}
+\end{equation}
+
+
+Равносильность: $a \equiv b$:
+
+
+\begin{equation}
+\begin{tabular}{cc|c}
+a & b & a $\equiv$ b \\
+\hline
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+1 & 1 & 1 \\
+\end{tabular}
+\end{equation}
+
+
+Отрицание: $\neg a$:
+\begin{equation}
+\begin{tabular}{c|c}
+a & $\neg$ a \\
+\hline
+0 & 1 \\
+1 & 0 \\
+\end{tabular}
+\end{equation}
+
+
+
+Законы Де Моргана:
+
+$\neq a \wedge \neg b = a \vee  b $
+
+Тавтология: высказывание, которое всегда истинное
+
+противоречие: высказывание, которое всегда ложно
+
+
+
+\section*{Введение в теорию множеств}
+
+Упрощенное определение множества: Множество - совокупность объектов или элементов.
+
+Способы задания множества:
+
+\{Описание множества \}
+
+\{x | x  обладает свойством p\}
+
+$\emptyset$ - пусто множество
+
+Определение: Если a есть один из элементов множества A, то мы говорим, что a есть элемент множества A и a принадлежит A.
+
+$$ a \in A$$
+
+$$ a \not\in A$$
+
+$$ A \cap B: \{x| ( x \in A) \wedge (x \in B)\}$$
+
+
+$$ A \cup B: \{x| ( x \in A) \vee (x \in B)\}$$
+$$ A \\ B: \{x| ( x \in A) \wedge \neg(x \in B)\}$$
+
+
+
+
+\end{document}

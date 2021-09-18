@@ -1,0 +1,452 @@
+\documentclass[a4paper]{article}
+
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools}
+
+\author{Шорин Сергей, БКНАД211}
+\title{Линейная Алгебра ДЗ 1}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\section*{1.A}
+Составим матрицу СЛУ:
+\begin{equation*}
+    \left(\begin{array}{rrrr|r}
+   7 & 5 & -3 & 2 &1\\
+   3 & 2 & -6 & 4 & 2\\
+  -15 & -11 & -3 & 2 & 1 
+   \end{array}\right)_{III -= II * 5}
+   \approx
+   \left(\begin{array}{rrrr|r}
+   7 & 5 & -3 & 2 &1\\
+   3 & 2 & -6 & 4 & 2\\
+   0 & -1 & -33 & 22 & 11 
+   \end{array}\right)_{I -= II * 2}
+\approx
+\end{equation*}
+\begin{equation*}
+\approx
+   \left(\begin{array}{rrrr|r}
+   1 & 1 & 9 & -6 & -3\\
+   3 & 2 & -6 & 4 & 2\\
+   0 & -1 & -33 & 22 & 11 
+   \end{array}\right)_{II -= I * 3}
+\approx
+   \left(\begin{array}{rrrr|r}
+   1 & 1 & 9 & -6 & -3\\
+   0 & -1 & -33 & 22 & 11\\
+   0 & -1 & -33 & 22 & 11 
+   \end{array}\right)_{I -= II}
+  \approx
+\end{equation*}
+\begin{equation*}
+\approx
+   \left(\begin{array}{rrrr|r}
+   1 & 0 & -24 & 16 & 8\\
+   0 & -1 & -33 & 22 & 11\\
+   0 & -1 & -33 & 22 & 11 
+   \end{array}\right)
+\end{equation*}
+
+Ответ:
+
+\begin{equation*}
+\begin{pmatrix}
+  x_1 \\
+  x_2\\
+  x_3\\
+  x_4
+\end{pmatrix} = 
+\begin{pmatrix}
+  24 x_3 - 16x_4 + 8\\
+  -33x_3 + 22x_4 - 11\\
+	x_3\\
+	x_4
+\end{pmatrix}
+\end{equation*}
+
+\section*{1.B}
+Составим матрицу СЛУ:
+\begin{equation*}
+    \left(\begin{array}{rrrr|r}
+   2 & -1 & 3 & -7 &5\\
+   6 & -3 & 1 & -4 & 7\\
+  4 & -2 & 14 & -31 & 18 
+   \end{array}\right)_{II -= I * 3}
+   \approx
+   \left(\begin{array}{rrrr|r}
+   2 & -1 & 3 & -7 &5\\
+   0 & 0 & -8 & 17 & -8\\
+  4 & -2 & 14 & -31 & 18 
+   \end{array}\right)_{III -= I * 2}
+\approx
+\end{equation*}
+\begin{equation*}
+\approx
+   \left(\begin{array}{rrrr|r}
+   2 & -1 & 3 & -7 &5\\
+   0 & 0 & -8 & 17 & -8\\
+   0 & 0 & 8 & -17 & 8\\
+   \end{array}\right)_{I = I * \frac{3}{8}}
+\approx
+   \left(\begin{array}{rrrr|r}
+    2 & -1 & 0 & -\frac{5}{8} &2\\
+   0 & 0 & -8 & 17 & -8\\
+   \end{array}\right)
+  \approx
+\end{equation*}
+\begin{equation*}
+\approx
+   \left(\begin{array}{rrrr|r}
+   1 & \frac{-1}{2} & 0 & -\frac{5}{16} &1\\
+   0 & 0 & 1 & \frac{-17}{8} & 1\\
+   \end{array}\right)
+\end{equation*}
+
+Ответ:
+
+\begin{equation*}
+\begin{pmatrix}
+  x_1 \\
+  x_2\\
+  x_3\\
+  x_4
+\end{pmatrix} = 
+\begin{pmatrix}
+  \frac{1}{2} x_2 + \frac{5}{16}x_4 + 1\\
+  x_2\\
+  \frac{17}{8}x_4 + 1\\
+	x_4
+\end{pmatrix}
+\end{equation*}
+
+\section*{2}
+
+Составим матрицу СЛУ и вычтем из 2,3 и 4 строчек певую
+\begin{equation*}
+   \left(\begin{array}{rrrr|r}
+   2 & 3 & 1 & 2 & 3\\
+   4 & 6 & 3 & 4 & 5\\
+   6 & 9 & 5 & 6 & 7\\ 
+   8 & 12 & 7 & \lambda & 9\\ 
+   \end{array}\right)
+\approx
+   \left(\begin{array}{rrrr|r}
+   2 & 3 & 1 & 2 & 3\\ 
+   0 & 0 & 1 & 0 & -1\\
+   0 & 0 & 2 & 0 & -2\\ 
+   0 & 0 & 3 & \lambda - 8 & -3\\ 
+   \end{array}\right)_{IV -= 3II}
+  \approx
+\end{equation*}
+
+
+
+\begin{equation*}
+\approx
+   \left(\begin{array}{rrrr|r}
+   1 & \frac{3}{2} & 0 & 1 & 2\\ 
+   0 & 0 & 1 & 0 & -1\\
+   0 & 0 & 0 & \lambda - 8 & 0\\ 
+   \end{array}\right)
+\end{equation*}
+
+При $\lambda = 8$ $x_4 $ - свободная переменная.
+Тогда ответ принимает вид:
+
+\begin{equation*}
+\begin{pmatrix}
+  x_1 \\
+  x_2\\
+  x_3\\
+  x_4\\
+  \lambda
+\end{pmatrix} = 
+\begin{pmatrix}
+  -\frac{3}{2}x_2 - x_4 + 2\\
+x_2\\
+	-1\\
+	x_4\\
+	8
+\end{pmatrix}
+\end{equation*}
+
+При $\lambda \neq 8$ $x_4 = 0$
+
+Ответ:
+
+\begin{equation*}
+\begin{pmatrix}
+  x_1 \\
+  x_2\\
+  x_3\\
+  x_4\\
+\end{pmatrix} = 
+\begin{pmatrix}
+  -\frac{3}{2}x_2 + 2\\
+x_2\\
+	-1\\
+	0\\
+\end{pmatrix}
+\end{equation*}
+
+\section*{3}
+
+
+\begin{equation*}
+ \begin{cases}
+  a0^3 + b0^2 + c0 + d = 2\\
+  a1^3 + b1^2 + c1 + d = 3\\
+  a2^3 + b2^2 + c2 + d = 1\\
+  a3^3 + b3^2 + c3 + d = -7\\
+ \end{cases}
+\end{equation*}
+
+
+\begin{equation*}
+   \left(\begin{array}{rrrr|r}
+   0 & 0 & 0 & 1 & 2\\ 
+   1 & 1 & 1 & 1 & 3\\
+   8 & 4 & 2 & 1 & 1\\ 
+   27 & 9 & 3 & 1 & -7\\ 
+   \end{array}\right)
+\approx
+  \left(\begin{array}{rrrr|r}
+   1 & 1 & 1 & 0 & 1\\
+   8 & 4 & 2 & 0 & -1\\ 
+   27 & 9 & 3 &0 & -9\\ 
+    0 & 0 & 0 & 1 & 2\\ 
+   \end{array}\right)
+  \approx
+\end{equation*}
+
+\begin{equation*}
+\approx
+ \left(\begin{array}{rrrr|r}
+   1 & 1 & 1 & 0 & 1\\
+   0 & -4 & -6 & 0 & -9\\ 
+   0 & -18 & -24 & 0 & -36\\ 
+    0 & 0 & 0 & 1 & 2\\ 
+   \end{array}\right)
+\approx
+ \left(\begin{array}{rrrr|r}
+   1 & 1 & 1 & 0 & 1\\
+   0 & 4 & 6 & 0 & 9\\ 
+   0 & 3 & 4 & 0 & 6\\ 
+    0 & 0 & 0 & 1 & 2\\ 
+   \end{array}\right)_{II -= III}
+  \approx
+\end{equation*}
+
+\begin{equation*}
+\approx
+ \left(\begin{array}{rrrr|r}
+   1 & 1 & 1 & 0 & 1\\
+   0 & 1 & 2 & 0 & 3\\ 
+   0 & 3 & 4 & 0 & 6\\ 
+    0 & 0 & 0 & 1 & 2\\ 
+   \end{array}\right)_{III -= 3II}
+\approx
+ \left(\begin{array}{rrrr|r}
+   1 & 1 & 1 & 0 & 1\\
+   0 & 1 & 2 & 0 & 3\\ 
+   0 & 0 & -2 & 0 & -3\\ 
+    0 & 0 & 0 & 1 & 2\\
+   \end{array}\right)
+  \approx
+\end{equation*}
+
+\begin{equation*}
+\approx
+ \left(\begin{array}{rrrr|r}
+   1 & 1 & 1 & 0 & 1\\
+   0 & 1 & 0 & 0 & 0\\ 
+   0 & 0 & 1 & 0 & \frac{3}{2}\\ 
+    0 & 0 & 0 & 1 & 2\\
+   \end{array}\right)
+\approx
+ \left(\begin{array}{rrrr|r}
+   1 & 0 & 0 & 0 & -\frac{1}{2}\\
+   0 & 1 & 0 & 0 & 0\\ 
+   0 & 0 & 1 & 0 & \frac{3}{2}\\ 
+    0 & 0 & 0 & 1 & 2\\
+   \end{array}\right)
+  \approx
+\end{equation*}
+Искомое уравнение: $-\frac{1}{2}x^3 + \frac{3}{2}x + 2$
+
+\section*{4}
+
+Найдем точку P:
+\begin{equation*}
+ \begin{cases}
+  x + 2y = 5\\
+  -2x + 3y = 4\\
+ \end{cases}
+\end{equation*}
+
+\begin{equation*}
+   \left(\begin{array}{rr|r}
+   1 & 2& 5\\ 
+   -2 & 3 & 4\\
+   \end{array}\right)
+\approx
+   \left(\begin{array}{rr|r}
+   1 & 2& 5\\ 
+   0 & 7 & 14\\
+   \end{array}\right)
+  \approx
+     \left(\begin{array}{rr|r}
+   1 & 2& 5\\ 
+   0 & 1 & 2\\
+   \end{array}\right)
+  \approx
+       \left(\begin{array}{rr|r}
+   1 & 0& 1\\ 
+   0 & 1 & 2\\
+   \end{array}\right)
+\end{equation*}
+\begin{equation*}
+     \left(\begin{array}{rr|r}
+   x_1\\
+   y_1
+   \end{array}\right)
+  =
+       \left(\begin{array}{rr|r}
+    1\\ 
+    2\\
+   \end{array}\right)
+\end{equation*}
+
+Найдем точку Q:
+\begin{equation*}
+ \begin{cases}
+  2x + -y = 4\\
+  3x - 2y = 6\\
+ \end{cases}
+\end{equation*}
+
+\begin{equation*}
+   \left(\begin{array}{rr|r}
+   2 & -1 & 4\\ 
+   3 & -2 & 6\\
+   \end{array}\right)
+\approx
+   \left(\begin{array}{rr|r}
+	2 & -1 & 4\\ 
+   1 & -1 & 2\\
+   \end{array}\right)
+  \approx
+     \left(\begin{array}{rr|r}
+	0 & 1 & 0\\ 
+   1 & -1 & 2\\
+   \end{array}\right)
+  \approx
+       \left(\begin{array}{rr|r}
+   1 & 0& 2\\ 
+   0 & 1 & 0\\
+   \end{array}\right)
+\end{equation*}
+\begin{equation*}
+     \left(\begin{array}{rr|r}
+   x_2\\
+   y_2
+   \end{array}\right)
+  =
+       \left(\begin{array}{rr|r}
+    2\\ 
+    0\\
+   \end{array}\right)
+\end{equation*}
+
+Найдем коэффициенты прямой $x = ay + b$.
+\begin{equation*}
+\begin{cases}
+2a + b = 1
+0a + b = 2
+\end{cases}
+\end{equation*}
+Вычтем второе равенство из первого:
+\begin{equation*}
+\begin{cases}
+2a = -1
+b = 2
+\end{cases}
+\end{equation*}
+Следовательно, искомое уравнение имеет вид $-\frac{1}{2}y + 2 = x$
+
+
+\section*{5.A}
+Приведем пример неопределенной системы, у которой есть только одно целое решение: Предположим, что $x_2$ - свободная переменная в этой системе, а $x_1 = 1 + (x_2-1)\sqrt{2}$ 
+\begin{equation*}
+     \left(\begin{array}{r}
+   x_1\\
+   x_2
+   \end{array}\right)
+  =
+       \left(\begin{array}{r}
+    1 + (x_2-1)\sqrt{2}\\ 
+    x_2\\
+   \end{array}\right)
+\end{equation*}
+
+Так как при умножении любого целого числа на $\sqrt{2}$ получается иррациональное число, $x_1$ будет целым только при $x_2 = 1$. Поэтому у этого уравнения есть только одно целое решение, в котором $x_1 = 0, x_2 = 1$.
+
+\section*{5.Б}
+Если в СЛУ используются только целые коэффициенты, в ответе могут появиться рациональные числа (в результате применения III типа преобразования).
+Напишем пример такой системы:
+\begin{equation*}
+     \left(\begin{array}{r}
+   x_1\\
+   x_2
+   \end{array}\right)
+  =
+       \left(\begin{array}{r}
+    \frac{p_0}{q_0} + \frac{p}{q}  x_2\\ 
+    x_2\\
+   \end{array}\right)
+ \approx
+ \left(\begin{array}{r}
+    \frac{qp_0}{qq_0} + \frac{q_0px_2}{qq_0} \\ 
+    x_2\\
+   \end{array}\right)
+   \approx
+ \left(\begin{array}{r}
+    \frac{qp_0 + q_0px_2}{qq_0}\\ 
+    x_2\\
+   \end{array}\right)
+\end{equation*}
+Допустим, это уравнение имеет только одно решение в целых числах при $x_2 = a$. Но тогда у этого уравнения будет еще одно целое решение при $x_2 = a + nqq_0$, где n - любое целое число:
+$$\frac{qp_0 + q_0p(a + nqq_0)}{qq_0} ==\frac{qp_0 + q_0pa}{qq_0} + nq_0p $$
+Если в уравнении больше одной свободной переменной, можно повторить подобные размышления для каждой переменной и приравнять все свободные переменные одному числу, равному произведению $n_1q_1q_{01} * n_2q_2q_{02} * ... * n_mq_mq_{0m}$
+Следовательно, у уравнения не может быть одно и только одно решение в целых числах.
+
+\section*{6}
+Рассмотрим используемые преобразования в алгоритме  Гаусса для приведения к ступенчатому виду:
+
+
+Преобразования I не влияют на другие преобразования, поэтому их можно свободно перемещать: например, заранее расставить строки в нужном порядке до использования преобразований II и III типа.
+
+
+Допустим, в процессе решения мы в начале применили преобразование III вида (добавив к строчке i строчку j, домноженную на n), а затем применили преобразование II вида(умножив строчку j на m).
+Но мы можем поменять местами эти преобразования, если а начале домножим строчку j на m, а затем добавив к строчке i строчку j, домноженную на $\frac{n}{m}$.
+
+Если на m умножили вначале строчку i, то при преобразовании III вида нужно умножать строчку на m*n.
+Эти перестановки не влияют на алгоритм Гаусса: все элементы в столбце кроме ведущего будут обнулены.
+
+
+Таким образом, любую цепочку элементарных преобразований можно преобразить в вид n преобразований I -> m преобразований II -> c преобразований III.
+
+
+
+\end{document}
