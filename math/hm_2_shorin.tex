@@ -35,7 +35,7 @@ $$N = \frac{ 1}{\epsilon} + 1 $$
 Найти предел, используя определение: 
 $\displaystyle{\lim_{x \to \infty}} \frac{\log_an}{n}$
 
-$$ \frac{\log_an}{n} < \frac{\log_an}{n} < \epsilon $$
+$$\frac{\log_an}{n} < \epsilon $$
 $$ \log_an < \epsilon n $$
 
 $$ \frac{\ln n}{\ln a} < \epsilon n $$
@@ -59,8 +59,24 @@ $$ n  < (1 + \epsilon ) ^ n$$
 
 $$ n  < 1 + n\epsilon + \frac{n(n-1)}{2}\epsilon^2 + ... $$ 
 
-Так как $\epsilon$ стремится к нулю, $\epsilon^2$ 
+(НЕ РЕШЕНО)
 
+\section{1.а}
+Найти предел $ \displaystyle{\lim_{x \to \infty}}(\sqrt{(n+1)(n+2)} - \sqrt{n(n-1)} $
 
+Домножим на $\sqrt{(n+1)(n+2)} + \sqrt{n(n-1)}$
 
+$$ \displaystyle{\lim_{x \to \infty}}\frac{(n+1)(n+2) - n(n-1)}{\sqrt{(n+1)(n+2)} + \sqrt{n(n-1)}} $$
+
+$$ \displaystyle{\lim_{x \to \infty}}\frac{ n^2 + 3n + 2 - n^2 + n}{\sqrt{n^2 + 3n + 2} + \sqrt{n^2-n)}} $$
+
+$$ \displaystyle{\lim_{x \to \infty}}\frac{ 4n + 2 }{\sqrt{n^2 + 3n + 2} + \sqrt{n^2-n)}} $$
+
+$$ \displaystyle{\lim_{x \to \infty}}\frac{ 4 + \frac{2}{n} }{\sqrt{1 + \frac{3}{n} + \frac{2}{n^2}} + \sqrt{1-\frac{1}{n}}} $$
+
+При $x \to \infty$ $\frac{1}{n} \to 0$
+
+$$ \displaystyle{\lim_{x \to \infty}}\frac{ 4 + (0) }{\sqrt{1 + (0) + (0)} + \sqrt{1-(0)}} = \frac{4}{2} = 2 $$
+
+\subsection*{Ответ: $\lim = 2$}
 \end{document}
