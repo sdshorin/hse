@@ -1,0 +1,557 @@
+\documentclass[a4paper]{article}
+
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools}
+
+\author{Шорин Сергей, БКНАД211}
+\title{Линейная Алгебра ДЗ 3}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\section*{1.a}
+
+Если матрицу 3x4 умножить справа на
+\begin{equation*}
+\begin{pmatrix}
+1 & 0 & 3 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1\\
+\end{pmatrix}
+\end{equation*}, то первый столбец, умноженный на 3, прибавится к 3 столбцу.
+
+
+
+\section*{1.б}
+Если матрицу 3x4 умножить слева на
+\begin{equation*}
+\begin{pmatrix}
+1 & 0 & 0\\
+-4 & 1 & 0\\
+0 & 0 & 1\\
+\end{pmatrix}
+\end{equation*}, то вторая строка, умноженная на 4, будет вычтена из второй строки.
+
+
+
+\section*{1.в}
+
+Если матрицу 3x4 умножить справа на
+\begin{equation*}
+\begin{pmatrix}
+0 & 0 & 0 & 1\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+1 & 0 & 0 & 0\\
+\end{pmatrix}
+\end{equation*}, то первый столбец поменяется местами с четвертым столбцом.
+
+
+
+\section*{1.г}
+Если матрицу 3x4 умножить слева на
+\begin{equation*}
+\begin{pmatrix}
+1 & 0 & 0\\
+0 & -2 & 0\\
+0 & 0 & 1\\
+\end{pmatrix}
+\end{equation*}, то вторая строка умножится на -2.
+
+
+
+\section*{2.а}
+Чтобы вторая строка поменялась с четвертой, нужно домножить матрицу A слева на матрицу 
+\begin{equation*}
+\begin{pmatrix}
+1 & 0 & 0 & 0\\
+0 & 0 & 0 & 1\\
+0 & 0 & 1 & 0\\
+0 & 1 & 0 & 0\\
+\end{pmatrix}
+\end{equation*}
+
+
+
+
+\section*{2.б}
+Чтобы третий столбец домножить на 2, нужно домножить матрицу A справа на матрицу 
+\begin{equation*}
+\begin{pmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 2\\
+\end{pmatrix}
+\end{equation*}
+
+\section*{2.в}
+Чтобы прибавить третью строку к первой с коэффициентом -5, нужно домножить матрицу A слева на матрицу 
+\begin{equation*}
+\begin{pmatrix}
+1 & 0 & -5 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1\\
+\end{pmatrix}
+\end{equation*}
+
+\section*{2.г}
+Чтобы прибавить второй столбец к первому с коэффициентом 15, нужно домножить матрицу A справа на матрицу 
+\begin{equation*}
+\begin{pmatrix}
+1 & 0 & 0\\
+15 & 1 & 0\\
+0 & 0 & 2\\
+\end{pmatrix}
+\end{equation*}
+
+\section*{3.а}
+Найти обратную матрицу к 
+\begin{equation*}
+\begin{pmatrix}
+1 & 3\\
+4 & 11\\
+\end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+ \left(\begin{array}{rr|rr}
+   1 & 3 & 1 & 0\\
+   4 & 11 & 0 & 1\\
+   \end{array}\right)_{II -= I * 4}
+   \approx
+   \left(\begin{array}{rr|rr}
+   1 & 3 & 1 & 0\\
+   0 & -1 & -4 & 1\\
+   \end{array}\right)
+\approx
+   \left(\begin{array}{rr|rr}
+   1 & 3 & 1 & 0\\
+   0 & 1 & 4 & -1\\
+   \end{array}\right)
+  \approx
+\end{equation*}
+
+\begin{equation*}
+\approx
+   \left(\begin{array}{rr|rr}
+   1 & 0 & -11 & 3\\
+   0 & 1 & 4 & -1\\
+   \end{array}\right)
+  \approx
+\end{equation*}
+
+\subsection{Ответ:}
+\begin{equation*}
+A^{-1} = \begin{pmatrix}
+-11 & 3\\
+4 & -1\\
+\end{pmatrix}
+\end{equation*}
+
+
+
+\section*{3.б}
+Найти обратную матрицу к 
+\begin{equation*}
+\begin{pmatrix}
+3 & -4 & 5\\
+2 & -3 & 1\\
+3 & -5 & -1\\
+\end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+ \left(\begin{array}{rrr|rrr}
+  3 & -4 & 5 & 1 & 0 & 0\\
+2 & -3 & 1& 0 & 1 & 0\\
+3 & -5 & -1 & 0 & 0 & 1\\
+   \end{array}\right)
+   \approx
+ \left(\begin{array}{rrr|rrr}
+  1 & -1 & 4 & 1 & -1 & 0\\
+2 & -3 & 1& 0 & 1 & 0\\
+1 & -2 & -2 & 0 & -1 & 1\\
+   \end{array}\right)
+\approx
+ \left(\begin{array}{rrr|rrr}
+  1 & -1 & 4 & 1 & -1 & 0\\
+0 & -1 & -7& -2 & 3 & 0\\
+0 & -1 & -6 & -1 & 0 & 1\\
+   \end{array}\right)
+  \approx
+\end{equation*}
+\begin{equation*}
+ \left(\begin{array}{rrr|rrr}
+  1 & -1 & 4 & 1 & -1 & 0\\
+0 & 1 & 7 & 2 & -3 & 0\\
+0 & 0 & 1 & 1 & -3 & 1\\
+   \end{array}\right)
+   \approx
+ \left(\begin{array}{rrr|rrr}
+1 & 0 & 11 & 3 & -4 & 0\\
+0 & 1 & 7 & 2 & -3 & 0\\
+0 & 0 & 1 & 1 & -3 & 1\\
+   \end{array}\right)
+\approx
+ \left(\begin{array}{rrr|rrr}
+1 & 0 & 0 & -9 & 29 & -11\\
+0 & 1 & 0 & -5 & 18 & -7\\
+0 & 0 & 1 & 1 & -3 & 1\\
+   \end{array}\right)
+  \approx
+\end{equation*}
+
+
+\subsection{Ответ:}
+\begin{equation*}
+A^{-1} = \begin{pmatrix}
+-9 & 29 & -11\\
+-5 & 18 & -7\\
+1 & -3 & 1\\
+\end{pmatrix}
+\end{equation*}
+
+
+
+
+\section*{3.в}
+Найти обратную матрицу к 
+\begin{equation*}
+\begin{pmatrix}
+2 & 3 & 1 & 2\\
+1 & 1 & 2 & 0\\
+0 & 0 & 1 & -1\\
+0 & 0 & 1 & -2\\
+\end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+ \left(\begin{array}{rrrr|rrrr}
+ 2 & 3 & 1 & 2 & 1 & 0 & 0 & 0\\
+1 & 1 & 2 & 0 & 0 & 1 & 0 & 0\\
+0 & 0 & 1 & -1 & 0 & 0 & 1 & 0\\
+0 & 0 & 1 & -2 & 0 & 0 & 0 & 1\\
+   \end{array}\right)
+   \approx
+ \left(\begin{array}{rrrr|rrrr}
+ 2 & 3 & 1 & 2 & 1 & 0 & 0 & 0\\
+1 & 1 & 2 & 0 & 0 & 1 & 0 & 0\\
+0 & 0 & 1 & -1 & 0 & 0 & 1 & 0\\
+0 & 0 & 0 & -1 & 0 & 0 & -1 & 1\\
+   \end{array}\right)
+\approx
+\end{equation*}
+\begin{equation*}
+  \left(\begin{array}{rrrr|rrrr}
+ 2 & 3 & 1 & 2 & 1 & 0 & 0 & 0\\
+1 & 1 & 2 & 0 & 0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0 & 0 & 0 & 2 & -1\\
+0 & 0 & 0 & 1 & 0 & 0 & 1 & -1\\
+   \end{array}\right)
+   \approx
+  \left(\begin{array}{rrrr|rrrr}
+2 & 3 & 1 & 0 & 1 & 0 & -2 & 2\\
+1 & 1 & 2 & 0 & 0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0 & 0 & 0 & 2 & -1\\
+0 & 0 & 0 & 1 & 0 & 0 & 1 & -1\\
+   \end{array}\right)
+\approx
+\end{equation*}
+\begin{equation*}
+  \left(\begin{array}{rrrr|rrrr}
+1 & 1 & 0 & 0 & 0 & 1 & -4 & 2\\
+2 & 3 & 0 & 0 & 1 & 0 & -4 & 3\\
+0 & 0 & 1 & 0 & 0 & 0 & 2 & -1\\
+0 & 0 & 0 & 1 & 0 & 0 & 1 & -1\\
+   \end{array}\right)
+   \approx
+  \left(\begin{array}{rrrr|rrrr}
+1 & 1 & 0 & 0 & 0 & 1 & -4 & 2\\
+0 & 1 & 0 & 0 & 1 & -2 & 4 & -1\\
+0 & 0 & 1 & 0 & 0 & 0 & 2 & -1\\
+0 & 0 & 0 & 1 & 0 & 0 & 1 & -1\\
+   \end{array}\right)
+\approx
+\end{equation*}
+\begin{equation*}
+\approx
+  \left(\begin{array}{rrrr|rrrr}
+1 & 0 & 0 & 0 & -1 & 3 & -8 & 3\\
+0 & 1 & 0 & 0 & 1 & -2 & 4 & -1\\
+0 & 0 & 1 & 0 & 0 & 0 & 2 & -1\\
+0 & 0 & 0 & 1 & 0 & 0 & 1 & -1\\
+   \end{array}\right)
+\end{equation*}
+
+\subsection{Ответ:}
+\begin{equation*}
+A^{-1} = \begin{pmatrix}
+-1 & 3 & -8 & 3\\
+ 1 & -2 & 4 & -1\\
+0 & 0 & 2 & -1\\
+0 & 0 & 1 & -1\\
+\end{pmatrix}
+\end{equation*}
+
+
+\section*{4.a}
+Представьте в виде произведения матриц элементарных преобразований:
+\begin{equation*}
+\begin{pmatrix}
+1 & 2\\
+3 & 7\\
+\end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+\begin{pmatrix}
+1 & 0\\
+3 & 1\\
+\end{pmatrix}
+\begin{pmatrix}
+1 & 2\\
+0 & 1\\
+\end{pmatrix} = 
+\begin{pmatrix}
+1 & 2\\
+3 & 7\\
+\end{pmatrix}
+\end{equation*}
+\begin{equation*}
+\begin{pmatrix}
+1 & 0\\
+3 & 1\\
+\end{pmatrix}
+\begin{pmatrix}
+1 & 2\\
+0 & 1\\
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0\\
+0 & 1\\
+\end{pmatrix} = 
+\begin{pmatrix}
+1 & 2\\
+3 & 7\\
+\end{pmatrix}
+\end{equation*}
+\subsection*{Ответ:}
+\begin{equation*}
+\begin{pmatrix}
+1 & 0\\
+3 & 1\\
+\end{pmatrix}
+\begin{pmatrix}
+1 & 2\\
+0 & 1\\
+\end{pmatrix}
+\end{equation*}
+
+
+
+\section*{4.б}
+Представьте в виде произведения матриц элементарных преобразований:
+\begin{equation*}
+\begin{pmatrix}
+2 & 0 & 0\\
+3 & 1 & 1\\
+0 & 0 & 2\\
+\end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+\begin{pmatrix}
+2 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 2
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 & 0\\
+3 & 1 & 1\\
+0 & 0 & 1\\
+\end{pmatrix} = 
+\begin{pmatrix}
+2 & 0 & 0\\
+3 & 1 & 1\\
+0 & 0 & 2\\
+\end{pmatrix}
+\end{equation*}
+\begin{equation*}
+\begin{pmatrix}
+2 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 2
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 & 0\\
+0 & 1 & 1\\
+0 & 0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 & 0\\
+3 & 1 & 0\\
+0 & 0 & 1\\
+\end{pmatrix} = 
+\begin{pmatrix}
+2 & 0 & 0\\
+3 & 1 & 1\\
+0 & 0 & 2\\
+\end{pmatrix}
+\end{equation*}
+\begin{equation*}
+\begin{pmatrix}
+2 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 2
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 & 0\\
+0 & 1 & 1\\
+0 & 0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 & 0\\
+3 & 1 & 0\\
+0 & 0 & 1\\
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1\\
+\end{pmatrix} = 
+\begin{pmatrix}
+2 & 0 & 0\\
+3 & 1 & 1\\
+0 & 0 & 2\\
+\end{pmatrix}
+\end{equation*}
+\subsection*{Ответ:}
+\begin{equation*}
+\begin{pmatrix}
+2 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 2
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 & 0\\
+0 & 1 & 1\\
+0 & 0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 & 0\\
+3 & 1 & 0\\
+0 & 0 & 1\\
+\end{pmatrix}
+\end{equation*}
+
+\section*{4.a}
+
+Решим матричное уравнение:
+\begin{equation*}
+X\begin{pmatrix}
+-1 & 1 \\
+3 & -4
+\end{pmatrix}
+= 
+\begin{pmatrix}
+-2 & -1 \\
+3 & 4
+\end{pmatrix}
+\end{equation*}
+Найдем обратную матрицу:
+
+\begin{equation*}
+ \left(\begin{array}{rr|rr}
+   -1 & 1 & 1 & 0\\
+   3 & -4 & 0 & 1\\
+   \end{array}\right)
+   \approx
+   \left(\begin{array}{rr|rr}
+   -1 & 1 & 1 & 0\\
+   0 & -1 & 3 & 1\\
+   \end{array}\right)
+\approx
+   \left(\begin{array}{rr|rr}
+   -1 & 0 & 4 & 1\\
+   0 & -1 & 3 & 1\\
+   \end{array}\right)
+  \approx
+      \left(\begin{array}{rr|rr}
+   1 & 0 & -4 & -1\\
+   0 & 1 & -3 & -1\\
+   \end{array}\right)
+\end{equation*}
+
+Домножим равенство на эту матрицу справа:
+\begin{equation*}
+X\begin{pmatrix}
+-1 & 1 \\
+3 & -4
+\end{pmatrix}
+\begin{pmatrix}
+-4 & -1 \\
+-3 & -1
+\end{pmatrix}
+= 
+\begin{pmatrix}
+-2 & -1 \\
+3 & 4
+\end{pmatrix}
+\begin{pmatrix}
+-4 & -1 \\
+-3 & -1
+\end{pmatrix} = X
+\end{equation*}
+\begin{equation*}
+\begin{pmatrix}
+-2 & -1 \\
+3 & 4
+\end{pmatrix}
+\begin{pmatrix}
+-4 & -1 \\
+-3 & -1
+\end{pmatrix} =
+\begin{pmatrix}
+11 & 3 \\
+-24 & -7
+\end{pmatrix}
+= X
+\end{equation*}
+\subsection{Ответ:}
+\begin{equation*}
+X = \begin{pmatrix}
+11 & 3 \\
+-24 & -7
+\end{pmatrix}
+\end{equation*}
+
+
+\section*{4.б}
+
+Решим матричное уравнение:
+\begin{equation*}
+\begin{pmatrix}
+1 & 2 & -3 \\
+3 & 2 & -4 \\
+2 & -1 & 0 \\
+\end{pmatrix}
+X = \begin{pmatrix}
+1 & -3 & 0 \\
+10 & 2 & 7 \\
+10 & 7 & 8 \\
+\end{pmatrix}
+\end{equation*}
+
+
+\end{document}
