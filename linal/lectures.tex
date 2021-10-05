@@ -4,8 +4,9 @@
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english,russian]{babel}
-
-
+\usepackage{graphicx}
+\graphicspath{{pictures/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
 \usepackage{amsmath, amsfonts, amssymb, amsthm, mathtools}
 
 \author{Sergey}
@@ -315,6 +316,157 @@ $$tr(A) = a{11} + a{22} + a{33} + ... + a{nn}$$
 
 Теорема:
 $$ tr(PQ) = tr(QP)$$
+
+
+
+
+
+\section*{Лекция 6. Перестановки}
+
+
+Опр. Перестановка длины n - переупорядоченный набор от 1 до n.
+
+Например (2, 3, 7, 4, 6, 1, 7) - перестанока длинны 7.
+
+Подстановка длинны n - это отображение  (биекция) $\sigma :{1,2,3,4,5,..n} /to {1,2,3,4,5,..n}$
+
+
+Пример:
+
+\begin{equation*}
+\sigma = 
+\begin{pmatrix}
+	1 & 2 &3 & 4 & 5\\
+	3 & 4 & 5 & 1 & 2\\	
+\end{pmatrix}
+=
+\begin{pmatrix}
+	2 & 3 &1 & 4 & 5\\
+	4 & 5& 3 & 1 & 2\\	
+\end{pmatrix}
+\end{equation*}
+
+Существует биекция между подстановками и перестановками.
+
+Всего $n!$ престановок.
+
+
+Произведение подстановок:
+
+$$ \gamma = \delta \dot \sigma$$
+$$ \gamma(i) = \delta \cdot \sigma(i) = \delta ( \sigma(i))$$
+При перемножении начинаем с перестановки справа:
+
+\begin{equation*}
+\sigma \delta= 
+\begin{pmatrix}
+	1 & 2 &3 & 4 & 5\\
+	3 & 4 & 5 & 1 & 2\\	
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+	1 & 2 &3 & 4 & 5\\
+	2 & 1 &3 & 4 & 5\\
+\end{pmatrix}
+=
+\begin{pmatrix}
+	1 & 2 &3 & 4 & 5\\
+	4 & 3 & 5 & 1 & 2\\	
+\end{pmatrix}
+\end{equation*}
+
+$$ 1 \to 2 \to 4$$
+$$ 2 \to 1 \to 3$$
+
+Произведение перестановок не коммуникативно!
+$$ \sigma \delta \neq \delta \sigma $$
+
+Произведение перестановок ассоциативно.
+$$ (\sigma \delta) \gamma = \sigma (\delta \gamma)$$
+$$ (\sigma \delta) \gamma(x) = (\sigma \delta) (\gamma(x)) = \sigma (\delta (\gamma(x))))= $$
+$$ =\sigma (\delta \gamma)(x) = \sigma (\delta\gamma(x)) = \sigma (\delta (\gamma(x))))$$
+
+
+Тождественная перестановка id (единичная перестановка):
+
+\begin{equation*}
+id= 
+\begin{pmatrix}
+	1 & 2 &3 & 4 & 5\\
+	1 & 2 &3 & 4 & 5\\
+\end{pmatrix}
+\end{equation*}
+
+Обратная перстановка : $\sigma^{-1}$. Так как $\sigma$ - биекция, такая перестановка единственна.
+
+(просто меняем местами верхний и нижний элемент)
+
+
+\begin{equation*}
+\sigma= 
+\begin{pmatrix}
+	1 & 2 &3 & 4 & 5\\
+	4 & 3 & 5 & 1 & 2\\	
+\end{pmatrix}
+\end{equation*}
+\begin{equation*}
+\sigma ^{-1}= 
+\begin{pmatrix}
+	1 & 2 &3 & 4 & 5\\
+	4 & 5 & 2 & 1 & 4\\	
+\end{pmatrix}
+\end{equation*}
+
+
+$$\sigma \sigma^{-1} = id$$
+
+\subsection*{Разложение в независимые циклы}
+
+\includegraphics[width=12cm]{premutations_circle}
+
+
+Лемма:ориентироанный граф, построенный по подстановке - это объединение нескольких не пересекающихся циклов.
+
+Доказательство:из любой вершины выходит одна стрелка и входит одна стрелка.
+
+
+
+\begin{equation*}
+\begin{pmatrix}
+	1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\
+	4 & 3 & 2 & 7 & 1 & 5 & 6 & 10 & 8 & 9\\	
+\end{pmatrix}
+=
+\begin{pmatrix}
+	1 & 4 &7 & 6 & 5 
+\end{pmatrix}
+\begin{pmatrix}
+	2 & 3
+\end{pmatrix}
+\begin{pmatrix}
+	8 & 10 & 9
+\end{pmatrix}
+\end{equation*}
+
+
+\begin{equation*}
+\begin{pmatrix}
+	2 & 3
+\end{pmatrix}= 
+\begin{pmatrix}
+	1 & 2 &3 & 4 & 5\\
+	1 & 3 &2 & 4 & 5\\
+\end{pmatrix}
+\end{equation*}
+
+
+\subsection*{Возведение в степень}
+\subsection*{Четность перестановок}
+
+
+
+
+
 
 
 
