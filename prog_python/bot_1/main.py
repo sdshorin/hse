@@ -1,41 +1,41 @@
 import telebot
-# from  telebot import types
 from  telebot import types 
-import config
 from matrix import Matrix, MatrixError
 from collections import defaultdict
 import random
 import time
-# token from bot @BotFather
-bot = telebot.TeleBot(config.TOKEN)
-
-user_data = defaultdict(lambda: {"vars": {}})
 import re
 
+# token from bot @BotFather
+import config # store token separatly
+bot = telebot.TeleBot(config.TOKEN)
 
-name = ''
-surname = ''
+#TODO: USE DATABASE
+user_data = defaultdict(lambda: {"vars": {}})
 
 
 class BotException(BaseException):
 	def __init__(self, str_d) -> None:
 		self.str = str_d
 
+
 @bot.message_handler(commands=['start', 'help'])
 def start_command(message):
    keyboard = telebot.types.InlineKeyboardMarkup()
    keyboard.add(
        telebot.types.InlineKeyboardButton(
-           "Message the developer", url='telegram.me/shorins'
+           "Связаться с разработчиком", url='telegram.me/shorins'
        )
    )
    bot.send_message(
        message.chat.id,
 	   """
 Матричный калькулятор для решения выражений.
+Версия v0.2
 Бот умеет складывать, перемножать, транспонировать матрицы.
 /try -  сгенерировать 6 случайных матриц для проверки
 /vars - Показать все локальные переменные 
+/clear - удалить все сохраненные матрицы
 
 Синтаксис:
 Имя матрицы - любой символ из диапазона A-Z.
@@ -49,17 +49,18 @@ A = 1 2 3
 
 Для вычисления новой матрицы - ведите
 ```
-C = 4 * A + B^T - D```
+C = (B * A + B)^T *D^T * C^T * F - L^T```
 Эта команда добавит переменную C, равную соответствующему выражению, и выведет С.
 
 Для решения выражения введите его:
-```4 * A + B^T - D```
+```(B * A + B)^T *D^T * C^T * F- L^T```
 
 Для печати матрицы введите ее название.
 
 	   """,
        reply_markup=keyboard
    )
+
 
 @bot.message_handler(commands=['try'])
 def start_command(message):
@@ -83,18 +84,23 @@ def start_command(message):
 
 @bot.message_handler(content_types=["text"])
 def get_text_message(message):
-	# bot.send_message(message.from_user.id, eval(message.text))
-	# return
-	bot.send_message(message.from_user.id,"input: "+ message.text)
+	# bot.send_message(message.from_user.id,"input: "+ message.text)
 	try:
 		if message.text.find("=") != -1:
 			add_new_var_for_user(message)
 		elif is_valid_matrix_name(message.text):
 			print_var(message, message.text)
+		elif is_expression(message.text):
+			matrix = eval_matrix_expression(message, message.text)
+			send_matrix(message, matrix)
+		else:
+			pass
 	except BotException as e:
 		bot.send_message(message.from_user.id, e.str)
 	except MatrixError as e:
 		bot.send_message(message.from_user.id, "MatrixError: " + str(e))
+	except BaseException as e:
+		bot.send_message(message.from_user.id, "Unknown error: " + str(e))
 	return
 
 	if message.text == "Hello":
@@ -112,6 +118,7 @@ def print_var(message, var):
 	matrix: Matrix = user_data[message.from_user.id]["vars"][var]
 	send_matrix(message, matrix, var)
 
+
 def send_matrix(message, matrix, matrix_name = ""):
 	if matrix_name:
 		bot.send_message(message.from_user.id, f"{matrix_name} =\n{matrix.print_pretty()}")
@@ -120,12 +127,11 @@ def send_matrix(message, matrix, matrix_name = ""):
 	
 
 
-
-
 def is_valid_matrix_name(input_str):
 	return len(input_str) == 1 and input_str.isupper() and input_str.isascii()
 
-
+def is_expression(text):
+	return "+" in text or "*" in text or "-" in text or "^T" in text
 
 is_only_nums = re.compile('-?\d+$')
 def add_new_var_for_user(message):
@@ -134,7 +140,7 @@ def add_new_var_for_user(message):
 	input_data = message.text.split("=")[1].strip()
 	new_var_name = new_var_name.strip()
 	if not is_valid_matrix_name(new_var_name):
-		raise BotException("Error: bad var name! Use one uppercace acsii letter, for example `A`, `B`")
+		raise BotException("Некорректное имя переменной. Имя должно быть английской заглавной буквой")
 	if not input_data:
 		bot.send_message(message.from_user.id, f"Запущен интерактивный режим ввода матрицы. Вводите матрицу построчно, когда закончите - отправьте любое сообщение без чисел")	
 		raise BotException("Интерактивный режим находится в разработке")
@@ -148,16 +154,58 @@ def add_new_var_for_user(message):
 		user_data[message.from_user.id]["vars"][new_var_name] = Matrix(input_data)
 		bot.send_message(message.from_user.id,f"Матрица {new_var_name} добавлена")
 	else:
-		new_matrix: Matrix = eval_matrix_expression(input_data, user_data[message.from_user.id]["vars"])
+		new_matrix: Matrix = eval_matrix_expression(message, input_data)
 		user_data[message.from_user.id]["vars"][new_var_name] = new_matrix
 		bot.send_message(message.from_user.id,f"Матрица {new_var_name} добавлена")
 		send_matrix(message, new_matrix, new_var_name)
 
-def eval_matrix_expression(expression, vars):
-	return Matrix(eval(check_expression(expression), vars, {}))
+def eval_matrix_expression(message, expression):
+	global user_data
+	vars = user_data[message.from_user.id]["vars"]
+	expression = expression.replace("^T", ".get_transposd()")
+	# return Matrix(eval(check_expression(expression, vars.keys()), {}, vars))
+	try:
+		return Matrix(eval(expression, {"__builtins__": {}}, vars))
+	except MatrixError as e:
+		raise e
+	except BaseException as e:
+		raise BotException(f"Ошибка во время вычислений:{str(e)}")
 
-def check_expression(expression: str)-> str:
-	
+# def check_expression(expression: str, valid_vars)-> str:
+# 	WAIT_VAR = 0
+# 	WAIT_ACTION = 1
+# 	WAIT_POSITIVE_INT = 2
+# 	status = WAIT_VAR
+# 	result_str = ""
+# 	expression = expression.strip()
+# 	while len(expression):
+# 		char = expression[0]
+# 		if char.isspace():
+# 			expression = expression[1:]
+# 			continue
+		
+# 		if status == WAIT_VAR:
+# 			if is_valid_matrix_name(char) and char in valid_vars:
+# 				expression = expression[1:]
+# 				result_str += char
+# 				status = WAIT_ACTION
+# 				continue
+# 			elif char == "(":
+# 				expression = expression[1:]
+# 				result_str += char
+# 				continue
+# 		elif status == WAIT_ACTION:
+# 			if char in "+-*":
+# 				expression = expression[1:]
+# 				result_str += char
+# 				status = WAIT_VAR
+# 				continue
+# 		expression = expression[1:]
+
+				
+
+
+
 
 # def get_name(message):
 # 	global name
@@ -178,12 +226,12 @@ def check_expression(expression: str)-> str:
 # 	keyboard.add(key_no)
 # 	bot.send_message(message.from_user.id, text = "Right?", reply_markup = keyboard)
 
-@bot.callback_query_handler(func = lambda call: True)
-def callback_worker(call):
-	if call.data == "yes":
-		bot.send_message(call.message.chat.id, "Great!")
-	elif call.data == "no":
-		bot.send_message(call.message.chat.id, "it's a pirty!")
+# @bot.callback_query_handler(func = lambda call: True)
+# def callback_worker(call):
+# 	if call.data == "yes":
+# 		bot.send_message(call.message.chat.id, "Great!")
+# 	elif call.data == "no":
+# 		bot.send_message(call.message.chat.id, "it's a pirty!")
 
 # print(1)
 # bot.polling(none_stop = True, interval = 0, timeout=30, long_polling_timeout = 5)

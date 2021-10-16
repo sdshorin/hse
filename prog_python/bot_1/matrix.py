@@ -44,13 +44,22 @@ class Matrix:
 	
 	def __add__(self, other: Matrix):
 		if self.size() != other.size():
-			raise MatrixError(self, other)
+			raise MatrixError(self, other, "Складывать можно только матрицы одинакового размера!")
 		result = self.copy()
 		for i in range(len(other.arr)):
 			for j in range(len(other.arr[0])):
 				result.arr[i][j] += other.arr[i][j]
 		return result
 	
+	def __sub__(self, other: Matrix):
+		if self.size() != other.size():
+			raise MatrixError(self, other, "Складывать можно только матрицы одинакового размера!")
+		result = self.copy()
+		for i in range(len(other.arr)):
+			for j in range(len(other.arr[0])):
+				result.arr[i][j] -= other.arr[i][j]
+		return result
+
 	@staticmethod
 	def _matrix_mult(mat_1, mat_2):
 		result = []
@@ -71,7 +80,7 @@ class Matrix:
 					result.arr[i][j] *= other
 		elif isinstance(other, Matrix):
 			if self.size()[1] != other.size()[0]:
-				raise MatrixError(self, other)
+				raise MatrixError(self, other, "Умножать матрицы можно только если a_m==b_n")
 			result.arr = Matrix._matrix_mult(self.arr, other.arr)
 	
 		return result
@@ -99,13 +108,18 @@ class Matrix:
 		self.arr = transposed
 		return self
 	
+	def get_transposd(self):
+		copy = self.copy()
+		return copy.transpose()
+	
+	
 	def solve(self, free_coeff: List):
 		matrix = self.copy()
 		coeff = Matrix([free_coeff]).transpose()
 		for i in range(len(matrix.arr)):
 			lider_line_num = get_lider_line(matrix.arr, i, i)
 			if lider_line_num < 0:
-				raise MatrixError(self, Matrix(free_coeff))
+				raise MatrixError(self, Matrix(free_coeff), "Не найден лидирующий элемент")
 			if lider_line_num != i:
 				matrix.element_premutation_2(lider_line_num, i)
 				coeff.element_premutation_2(lider_line_num, i)
