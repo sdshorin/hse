@@ -14,7 +14,6 @@ def dynamic_time_warping(time_series_1, time_series_2):
 class DTW_Exception(BaseException):
     pass
 
-
 def DTW(time_series_1, time_series_2, distance_func):
     if not len(time_series_1) or not len(time_series_2):
         raise DTW_Exception
