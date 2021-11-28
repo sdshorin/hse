@@ -1,17 +1,17 @@
 
 
-
 def IsPointInSquare(x, y):
-	return (-1 <= x <= 1) and (-1 <= y <= 1)
+    return (-1 <= x <= 1) and (-1 <= y <= 1)
+
 
 def main():
-	x = float(input())
-	y = float(input())
-	if IsPointInSquare(x, y):
-		print("YES")
-	else:
-		print("NO")
+    x = float(input())
+    y = float(input())
+    if IsPointInSquare(x, y):
+        print("YES")
+    else:
+        print("NO")
 
 
 if __name__ == "__main__":
-	main()
+    main()

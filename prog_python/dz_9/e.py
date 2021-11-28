@@ -3,8 +3,7 @@ from itertools import combinations
 
 def main():
     n = int(input())
-    arr = list(map(int, input().split()))
-    arr.sort()
+    arr = sorted(map(int, input().split()))
     counter = 0
     for triangle in combinations(arr, 3):
         if triangle[2] < triangle[0] + triangle[1]:
