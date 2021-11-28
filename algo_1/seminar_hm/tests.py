@@ -58,6 +58,10 @@ class DTW_Tester(unittest.TestCase):
             s2.pop(deleted_index)
             result = [[x, x if x < deleted_index and deleted_index != len(s1) - 1  else x - 1] for x in range(size)]
             self.assertEqual(dtw.dynamic_time_warping(s1, s2)[0], result)
+    def test_bad(self):
+        s1 = [1, 2, 3, 4, 5, 5, 5, 4]
+        result = ([[7, 7]], 0)
+        self.assertEqual(dtw.dynamic_time_warping(s1, s1), result)
 
 
 
