@@ -58,7 +58,8 @@ def _dtw_restore_path(dynamic_warping_cost):
         min_elem = None
         # check up left element first
         if y >= 1 and x >= 1 and (
-                min_elem is None or dynamic_warping_cost[x - 1][y - 1] < min_elem):
+                min_elem is None or
+                dynamic_warping_cost[x - 1][y - 1] < min_elem):
             min_elem = dynamic_warping_cost[x - 1][y - 1]
             previous_x, previous_y = x - 1, y - 1
         # check up element
