@@ -3,6 +3,7 @@ from collections import deque
 
 USED = 26
 
+
 def main():
     q, s_q = map(int, input().split())
     s = input()
@@ -29,7 +30,6 @@ def main():
                     ans += data[i]
         data[ord(elem) - ord("a")] += 1
     print(ans)
-
 
 
 if __name__ == "__main__":

@@ -4,7 +4,7 @@ def get_next_cell_state(arr, i, j):
     for x in range(i - 1, i + 2):
         for y in range(j - 1, j + 2):
             if (x == i and y == j) or x < 0 or y < 0 or\
-                         x >= len(arr) or y >= len(arr):
+                    x >= len(arr) or y >= len(arr):
                 continue
             if arr[x][y]:
                 live_sum += 1

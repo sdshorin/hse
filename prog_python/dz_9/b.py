@@ -24,11 +24,11 @@ def xanoi_main(disk, source, target):
         xanoi(disk - 1, source, 6 - source - target)
     print_move(disk, source, target)
     if disk > 3:
-        xanoi(disk - 3, 6 - source - target,  source)
+        xanoi(disk - 3, 6 - source - target, source)
     if disk > 2:
-        print_move(disk-2, 6 - source - target, target)
+        print_move(disk - 2, 6 - source - target, target)
     if disk > 3:
-        xanoi_main(disk-3, source, 6 - source - target)
+        xanoi_main(disk - 3, source, 6 - source - target)
 
 
 def main():
