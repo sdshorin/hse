@@ -4,7 +4,7 @@ from sys import stdin
 from typing import List
 from decimal import Decimal, getcontext
 
-class Matrix:
+	class Matrix:
 	def __init__(self, arr) -> None:
 		if isinstance(arr, Matrix):
 			arr = arr.arr
@@ -192,20 +192,20 @@ class Matrix:
 
 
 def get_lider_line(arr, start_line, linder_index):
-	for i in range(start_line, len(arr)):
-		if arr[start_line][linder_index]:
-			return i
-	return -1
+    for i in range(start_line, len(arr)):
+        if arr[start_line][linder_index]:
+            return i
+    return -1
+
 
 class MatrixError(BaseException):
-	def __init__(self, m_1: Matrix, m_2: Matrix, description_p = ""):
-		self.matrix1 = m_1
-		self.matrix2 = m_2
-		self.description = description_p
-	
-	def __str__(self) -> str:
-		return self.description
+    def __init__(self, m_1: Matrix, m_2: Matrix, description_p=""):
+        self.matrix1 = m_1
+        self.matrix2 = m_2
+        self.description = description_p
 
+    def __str__(self) -> str:
+        return self.description
 
 
 # if __name__ == "__main__":

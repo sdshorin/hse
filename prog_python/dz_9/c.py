@@ -6,7 +6,7 @@ class Builder:
 
     def add_num(self, n):
         self.str.append(f"{n-1}*{n}")
-        self.sum += (n-1)*n
+        self.sum += (n - 1) * n
 
     def get_str(self):
         return "+".join(self.str) + f"={self.sum}"

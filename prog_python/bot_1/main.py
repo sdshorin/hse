@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import telebot
-from  telebot import types 
+from telebot import types
 from matrix import Matrix, MatrixError
 from collections import defaultdict
 from func_timeout import func_set_timeout, FunctionTimedOut
@@ -12,7 +12,7 @@ import datetime
 import re
 
 # token from bot @BotFather
-import config # store token separatly
+import config  # store token separatly
 bot = telebot.TeleBot(config.TOKEN)
 
 EXAMPLE_MATRIX = [("A", 2, 2),("B", 2, 3), ("C", 3, 4), ("D", 3, 3), ("F", 4, 4), ("L", 2, 4)]
@@ -24,8 +24,8 @@ logging.basicConfig(filename='bot.log', level=logging.INFO)
 start_signature = str(datetime.datetime.now().strftime("%m/%d/%Y, %H:%M:%S"))
 logging.info(f"Started {start_signature}")
 class BotException(BaseException):
-	def __init__(self, str_d) -> None:
-		self.str = str_d
+    def __init__(self, str_d) -> None:
+        self.str = str_d
 
 # @bot.callback_query_handler(func=lambda call: True)
 # def callback_worker(call):
@@ -138,18 +138,23 @@ def print_var(message, var):
 	send_matrix(message, matrix, var)
 
 
-def send_matrix(message, matrix, matrix_name = ""):
-	if matrix_name:
-		bot.send_message(message.from_user.id, f"{matrix_name} =\n{matrix.print_pretty()}")
-	else:
-		bot.send_message(message.from_user.id, f"{str(matrix.print_pretty())}")	
-	
+def send_matrix(message, matrix, matrix_name=""):
+    if matrix_name:
+        bot.send_message(message.from_user.id,
+                         f"{matrix_name} =\n{matrix.print_pretty()}")
+    else:
+        bot.send_message(message.from_user.id, f"{str(matrix.print_pretty())}")
 
 def is_valid_matrix_name(input_str):
-	return len(input_str) == 1 and input_str.isupper() and input_str.isascii()
+    return len(input_str) == 1 and input_str.isupper() and input_str.isascii()
+
 
 def is_expression(text):
-	return "+" in text or "*" in text or "-" in text or "^T" in text
+    return "+" in text or "*" in text or "-" in text or "^T" in text
+
+
+is_only_nums = re.compile(r'-?\d+$')
+
 
 
 # Создаем или вычисляем новую матрицу
@@ -231,7 +236,7 @@ def _eval(expression, vars):
 # 		if char.isspace():
 # 			expression = expression[1:]
 # 			continue
-		
+
 # 		if status == WAIT_VAR:
 # 			if is_valid_matrix_name(char) and char in valid_vars:
 # 				expression = expression[1:]
@@ -253,11 +258,14 @@ def _eval(expression, vars):
 				
 # Запускаем бота
 while True:
-	try:
-		bot.polling(none_stop = True, interval = 0, timeout=30, long_polling_timeout = 5)
-	except Exception as e:
-		print(e)
-		time.sleep(1)
-		continue
-	break
-
+    try:
+        bot.polling(
+            none_stop=True,
+            interval=0,
+            timeout=30,
+            long_polling_timeout=5)
+    except Exception as e:
+        print(e)
+        time.sleep(1)
+        continue
+    break
